@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ScannerMot.App"
+             xmlns:infra="clr-namespace:ScannerMot.Infraestructure;assembly=ScannerMot">
+
+
+  <Application.Resources>
+    <ResourceDictionary>
+      
+      <!--General Colors-->
+      <Color x:Key="MainColor">#35478C </Color>
+      <Color x:Key="FontColor">#16193B</Color>
+      <Color x:Key="AccentColor1">#4E7AC7</Color>
+      <Color x:Key="AccentColor2">#ADD5F7</Color>
+      <Color x:Key="BackgroundColor">#7FB2F0</Color>
+
+      <!--Menu Color-->
+      <Color x:Key="MenuColor">#52656b</Color>
+      <Color x:Key="MenuFontColor">#ffffff</Color>
+
+      <!--Datatemplate-->
+      <DataTemplate x:Key="ServiceItemTemplate">
+        <ViewCell>
+          <Grid Padding="8">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="ic_action_clean.png"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                   VerticalOptions="Start"/>
+            <StackLayout Grid.Column="1">
+              <Label Text="{Binding Waitress }"
+                     FontAttributes="Bold"
+                     VerticalOptions="Center"
+                    TextColor="{StaticResource FontColor}"/>
+              <Label Text="{Binding Room}"
+                   VerticalOptions="Center"
+                   TextColor="{StaticResource FontColor}"/>
+              <Label Text="{Binding Supervisor}"
+                   VerticalOptions="Center"
+                   TextColor="{StaticResource MainColor}"/>
+            </StackLayout>
+
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+
+
+      <!--Datatemplate-->
+      <DataTemplate x:Key="EmployeeItemTemplate">
+        <ViewCell>
+          <Grid Padding="8">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="ic_action_employee.png"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                   VerticalOptions="Start"/>
+            <StackLayout Grid.Column="1">
+              <Label Text="{Binding Name }"
+                     FontAttributes="Bold"
+                     VerticalOptions="Center"
+                    TextColor="{StaticResource FontColor}"/>
+              <Label Text="{Binding Ap}"
+                   VerticalOptions="Center"
+                   TextColor="{StaticResource FontColor}"/>
+              <Label Text="{Binding Phone}"
+                   VerticalOptions="Center"
+                   TextColor="{StaticResource MainColor}"/>
+            </StackLayout>
+
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+      
+      <!--Locator-->
+      <infra:InstanceLocator x:Key="Locator"></infra:InstanceLocator>
+      
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

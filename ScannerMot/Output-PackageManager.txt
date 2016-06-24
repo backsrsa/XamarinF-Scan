@@ -1,0 +1,8 @@
+﻿Attempting to gather dependency information for package 'Microsoft.Bcl.1.1.10' with respect to project 'ScannerMot', targeting '.NETPortable,Version=v4.5,Profile=Profile111'
+Attempting to resolve dependencies for package 'Microsoft.Bcl.1.1.10' with DependencyBehavior 'Lowest'
+Resolving actions to install package 'Microsoft.Bcl.1.1.10'
+Resolved actions to install package 'Microsoft.Bcl.1.1.10'
+Adding package 'Microsoft.Bcl.Build.1.0.14' to folder 'D:\XamarinF-Scanner\ScannerMot\packages'
+Added package 'Microsoft.Bcl.Build.1.0.14' to folder 'D:\XamarinF-Scanner\ScannerMot\packages'
+Added package 'Microsoft.Bcl.Build.1.0.14' to 'packages.config'
+Executing script file 'D:\XamarinF-Scanner\ScannerMot\packages\Microsoft.Bcl.Build.1.0.14\tools\Install.ps1'...

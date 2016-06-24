@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ScannerMot.Pages.NewEmployeePage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="NewEmployee">
+  <ScrollView BindingContext="{Binding NewEmployee}">
+    <StackLayout>
+      <Label TextColor="{StaticResource FontColor}" Text="Nombre"/>
+      <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
+                 Text="{Binding Name, Mode=TwoWay}"></Entry>
+
+      <Label TextColor="{StaticResource FontColor}" Text="Apellidos"/>
+      <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
+                 Text="{Binding Ap, Mode=TwoWay}"></Entry>
+
+      <Label TextColor="{StaticResource FontColor}" Text="Telefono"/>
+      <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
+                 Text="{Binding Phone, Mode=TwoWay}" Keyboard="Telephone"></Entry>
+      
+      <Button  BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource MenuFontColor}"
+              Command="{Binding SaveCommand}"
+              Text="Save"
+               />
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

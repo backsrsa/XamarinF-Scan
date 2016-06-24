@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ScannerMot.Pages.MenuPage"
+             Title="Menú"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Icon="ic_action_menu.png">
+  <ListView ItemsSource="{Binding Menu}" HasUnevenRows="True">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <Grid>
+
+            <!--disparar eventos desde el grid-->
+            <Grid.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding NavigateCommand}"></TapGestureRecognizer>
+            </Grid.GestureRecognizers>
+            
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding Icon}"
+                   WidthRequest="50"
+                   HeightRequest="50"/>
+            <Label Text="{Binding Title}"
+                   Grid.Column="1"
+                   VerticalOptions="Center"
+                   TextColor="{StaticResource MenuFontColor}"/>
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+</ContentPage>
