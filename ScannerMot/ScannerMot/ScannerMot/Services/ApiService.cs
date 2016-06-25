@@ -13,8 +13,9 @@ namespace ScannerMot.Services
         {
             using (HttpClient client = new HttpClient())
             {
-                string url = "http://192.168.20.140:8084/api/services";
-               // client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
+                // string url = "http://192.168.20.140:8084/api/services";
+                string url = "http://192.168.20.55:8086/api/services";
+                // client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
                 var result = await client.GetAsync(url);
 
                 string data = await result.Content.ReadAsStringAsync();
@@ -32,7 +33,8 @@ namespace ScannerMot.Services
         {
             using (HttpClient client = new HttpClient())
             {
-                string url = "http://192.168.20.140:8084/api/services";
+                // string url = "http://192.168.20.140:8084/api/services";
+                string url = "http://192.168.20.55:8086/api/services";
                 //client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
 
                 string content = JsonConvert.SerializeObject(newService);

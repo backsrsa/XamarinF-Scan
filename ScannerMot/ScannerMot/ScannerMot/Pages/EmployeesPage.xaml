@@ -4,8 +4,7 @@
              x:Class="ScannerMot.Pages.EmployeesPage"
              BackgroundColor="{StaticResource BackgroundColor}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-  <ScrollView>
-    <StackLayout>
+    <StackLayout Orientation="Vertical" VerticalOptions="Center">
       <Button  BackgroundColor="{StaticResource MainColor}"
                TextColor="{StaticResource MenuFontColor}"
                Text="Agregar Empleado"
@@ -17,5 +16,4 @@
               Text="Empleados"
                />
     </StackLayout>
-  </ScrollView>
 </ContentPage>

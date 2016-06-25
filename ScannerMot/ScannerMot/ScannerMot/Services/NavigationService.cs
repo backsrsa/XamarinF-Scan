@@ -14,6 +14,8 @@ namespace ScannerMot.Services
         public async void Navigate(string pageName)
         {
             App.Master.IsPresented = false;//para cerrar el menu lateral
+            App.Master.MasterBehavior=MasterBehavior.Popover;
+            
             switch (pageName)
             {
                 case "ScannerPage":
@@ -49,8 +51,21 @@ namespace ScannerMot.Services
         //metodo para eliminar el icono back al navegar a una pagina
         private static async Task Navigate<T>(T page) where T : Page
         {
-            NavigationPage.SetHasBackButton(page, false);
+            //bool encontrado = false;
+            NavigationPage.SetHasBackButton(page, true);
             NavigationPage.SetBackButtonTitle(page, "Back");//para IOs
+            //var type = page.GetType();
+            //var stack = App.Navigator.Navigation.NavigationStack;
+            //foreach (var pag in stack)
+            //{
+            //    var z = pag.GetType();
+            //    if (z == type)
+            //    {
+            //        await App.Navigator.PushAsync(pag);
+            //        encontrado = true;
+            //    }
+            //}
+            //if (!encontrado)
             await App.Navigator.PushAsync(page);
         }
 
