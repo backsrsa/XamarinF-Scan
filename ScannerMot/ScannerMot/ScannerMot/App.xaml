@@ -73,7 +73,6 @@
                    VerticalOptions="Center"
                    TextColor="{StaticResource MainColor}"/>
             </StackLayout>
-
           </Grid>
         </ViewCell>
       </DataTemplate>
