@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ScannerMot.Models;
 using ScannerMot.Pages;
 using Xamarin.Forms;
 
@@ -26,8 +27,17 @@ namespace ScannerMot
             //    }
             //};
             InitializeComponent();
-             MainPage = new LoginPage();
+            CreateSuperUser();
+            MainPage = new LoginPage();
            // MainPage = new NavigationPage(new ScannerPage());
+        }
+
+        private static void CreateSuperUser()
+        {
+            using (var datos = new DataAccess())
+            {
+                datos.ExistsSuperUsuario();
+            }
         }
 
         public static NavigationPage Navigator { get; set; }

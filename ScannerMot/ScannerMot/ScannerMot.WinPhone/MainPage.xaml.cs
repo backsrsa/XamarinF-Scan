@@ -15,6 +15,7 @@ namespace ScannerMot.WinPhone
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
+            //ThemeManager.ToLightTheme();
             LoadApplication(new ScannerMot.App());
         }
 

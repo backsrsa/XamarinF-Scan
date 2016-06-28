@@ -18,10 +18,6 @@ namespace ScannerMot.Services
             
             switch (pageName)
             {
-
-
-
-
                 case "ScannerPage":
                     await Navigate(new ScannerPage());
                     break;

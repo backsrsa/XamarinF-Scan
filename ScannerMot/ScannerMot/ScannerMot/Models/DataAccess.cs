@@ -16,6 +16,7 @@ namespace ScannerMot.Models
             connection = new SQLiteConnection(config.Plataforma,
                 System.IO.Path.Combine(config.DirectorioDB, "Employees.db3"));
             connection.CreateTable<Employee>();
+            connection.CreateTable<DeviceUser>();
         }
 
         public void InsertEmployee(Employee employee)
@@ -41,6 +42,38 @@ namespace ScannerMot.Models
         public List<Employee> GetEmployees()
         {
             return connection.Table<Employee>().OrderBy(c => c.Ap).ToList();
+        }
+
+        public bool ExistsSuperUsuario()
+        {
+            bool resp = false;
+            var su = connection.Table<DeviceUser>().FirstOrDefault(c => c.DeviceUserId == 1);
+            try
+            {
+                if (su == null)
+                    InsertDeviceUser(new DeviceUser()
+                    {
+                        Password = Security.Encriptar("cmdok"),
+                        Username = "Admin"
+                    });
+                resp = true;
+            }
+            catch (Exception)
+            {
+                resp = false;
+            }
+            return resp;
+        }
+
+        public void InsertDeviceUser(DeviceUser deviceUser)
+        {
+            connection.Insert(deviceUser);
+        }
+
+        public DeviceUser GetDeviceUserByUsername(string username)
+        {
+            var user = connection.Table<DeviceUser>().FirstOrDefault(c => c.Username == username);
+            return user;
         }
 
         public void Dispose()

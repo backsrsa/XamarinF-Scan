@@ -6,7 +6,7 @@ namespace ScannerMot.ViewModels
 {
     public class MenuItemViewModel
     {
-        NavigationService _navigationService;
+        readonly NavigationService _navigationService;
 
         #region Propiedades
 

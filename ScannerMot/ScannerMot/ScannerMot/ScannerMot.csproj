@@ -40,6 +40,7 @@
     </Compile>
     <Compile Include="Infraestructure\InstanceLocator.cs" />
     <Compile Include="Models\DataAccess.cs" />
+    <Compile Include="Models\DeviceUser.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Pages\AllEmployeesPage.xaml.cs">
@@ -72,13 +73,17 @@
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Utilities\BaseViewModel.cs" />
     <Compile Include="Utilities\IConfig.cs" />
     <Compile Include="Utilities\IScanner.cs" />
+    <Compile Include="Utilities\Security.cs" />
     <Compile Include="Utilities\VariablesLocales.cs" />
+    <Compile Include="ViewModels\DeviceuserViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />

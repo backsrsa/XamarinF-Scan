@@ -7,9 +7,15 @@
   <StackLayout
     VerticalOptions="Center"
     HorizontalOptions="Center"
-    Spacing="20">
-    <Label TextColor="White" FontSize="20"
-           Text="Acceso"></Label>
+    Spacing="10">
+  <!--<StackLayout Orientation="Vertical" VerticalOptions="Center">-->
+    <Label TextColor="White" FontSize="20" Text="Acceso"></Label>
+    <Label TextColor="{StaticResource FontColor}" Text="Usuario"/>
+    <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
+               Text="{Binding Login.Username, Mode=TwoWay}"></Entry>
+    <Label TextColor="{StaticResource FontColor}" Text="Usuario"/>
+    <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
+               Text="{Binding Login.Password, Mode=TwoWay}" IsPassword="True"></Entry>
     <Button
       Command="{Binding StartCommand}"
       HeightRequest="40"

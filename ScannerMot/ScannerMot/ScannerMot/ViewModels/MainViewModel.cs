@@ -1,8 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using ScannerMot.Models;
 using ScannerMot.Services;
+using ScannerMot.Utilities;
 
 namespace ScannerMot.ViewModels
 {
@@ -10,15 +12,15 @@ namespace ScannerMot.ViewModels
     {
         private readonly NavigationService _navigationService;
         private ApiService _apiService;
+        private readonly DialogService _dialogService;
 
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
         public ObservableCollection<ServiceViewModel> Services { get; set; }
-
         public ObservableCollection<EmployeeViewModel> Employees { get; set; }
 
         public ServiceViewModel NewService { get; set; }
-
         public EmployeeViewModel NewEmployee { get; set; }
+        public DeviceuserViewModel Login { get; set; }
 
         #region Commands
 
@@ -47,7 +49,7 @@ namespace ScannerMot.ViewModels
 
                 case "AllEmployeesPage":
                     Employees.Clear();
-                    using (var datos=new DataAccess())
+                    using (var datos = new DataAccess())
                     {
                         var emps = datos.GetEmployees();
                         foreach (var e in emps)
@@ -88,9 +90,37 @@ namespace ScannerMot.ViewModels
                     Supervisor = service.Supervisor
                 });
             }
-            _navigationService.SetMainPage("MasterPage");
+            if (SystemAccess())
+                _navigationService.SetMainPage("MasterPage");
+            else
+            {
+
+                try
+                {
+                    Login.Password = string.Empty;
+                    Login.Username = string.Empty;
+                   
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
         }
 
+        private bool SystemAccess()
+        {
+            bool rsp = false;
+            using (var datos = new DataAccess())
+            {
+                var user = datos.GetDeviceUserByUsername(Login.Username);
+                if (user != null)
+                {
+                    rsp = user.Password == Security.Encriptar(Login.Password);
+                }
+            }
+            return rsp;
+        }
 
         #endregion
 
@@ -127,12 +157,14 @@ namespace ScannerMot.ViewModels
 
         public MainViewModel()
         {
-            Services= new ObservableCollection<ServiceViewModel>();
-            Employees=new ObservableCollection<EmployeeViewModel>();
-            _navigationService=new NavigationService();
+            Services = new ObservableCollection<ServiceViewModel>();
+            Employees = new ObservableCollection<EmployeeViewModel>();
+            _navigationService = new NavigationService();
+            _dialogService = new DialogService();
             _apiService = new ApiService();
+            Login = new DeviceuserViewModel();
             LoadMenu();
-        } 
+        }
 
         #endregion
     }
