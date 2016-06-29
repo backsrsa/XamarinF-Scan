@@ -5,7 +5,8 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundColor="{StaticResource BackgroundColor}">
   <ScrollView BindingContext="{Binding NewEmployee}">
-    <StackLayout>
+    <StackLayout VerticalOptions="Center"
+                >
       <Label TextColor="{StaticResource FontColor}" Text="Nombre"/>
       <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
                  Text="{Binding Name, Mode=TwoWay}"></Entry>

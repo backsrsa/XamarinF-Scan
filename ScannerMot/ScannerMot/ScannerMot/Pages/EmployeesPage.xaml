@@ -4,16 +4,18 @@
              x:Class="ScannerMot.Pages.EmployeesPage"
              BackgroundColor="{StaticResource BackgroundColor}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <StackLayout Orientation="Vertical" VerticalOptions="Center">
+    <StackLayout Orientation="Vertical" 
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center">
       <Button  BackgroundColor="{StaticResource MainColor}"
                TextColor="{StaticResource MenuFontColor}"
                Text="Agregar Empleado"
                Command="{Binding GoToCommand}" CommandParameter="NewEmployeePage"
-               />
+               BorderRadius="20"/>
       <Button BackgroundColor="{StaticResource MainColor}"
               TextColor="{StaticResource MenuFontColor}"
               Command="{Binding GoToCommand}" CommandParameter="AllEmployeesPage"
               Text="Empleados"
-               />
+              BorderRadius="20" />
     </StackLayout>
 </ContentPage>

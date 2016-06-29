@@ -10,6 +10,7 @@
 
   </ListView>
   <ContentPage.ToolbarItems>
-    <ToolbarItem Icon="ic_action_add.png" Command="{Binding GoToCommand}" CommandParameter="NewServicePage"></ToolbarItem>
+    <ToolbarItem Icon="ic_action_update.png" Command="{Binding UpdateServicesCommand}" Text="Actualizar"></ToolbarItem>
+    <ToolbarItem Icon="ic_action_add.png" Command="{Binding GoToCommand}" CommandParameter="NewServicePage" Text="Agregar"></ToolbarItem>
   </ContentPage.ToolbarItems>
 </ContentPage>

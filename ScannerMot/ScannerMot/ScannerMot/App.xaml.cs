@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ScannerMot.Models;
 using ScannerMot.Pages;
+using ScannerMot.Utilities;
 using Xamarin.Forms;
 
 namespace ScannerMot
@@ -28,8 +29,24 @@ namespace ScannerMot
             //};
             InitializeComponent();
             CreateSuperUser();
+            CrearUsuario();
             MainPage = new LoginPage();
-           // MainPage = new NavigationPage(new ScannerPage());
+            // MainPage = new NavigationPage(new ScannerPage());
+        }
+
+        private void CrearUsuario()
+        {
+            using (var datos = new DataAccess())
+            {
+                var users = datos.GetAllUsers();
+                if (users.Count == 1)
+                    datos.InsertDeviceUser(new DeviceUser()
+                    {
+                        Hotel = "Cosmo",
+                        Username = "administrador",
+                        Password = Security.Encriptar("1234")
+                    });
+            }
         }
 
         private static void CreateSuperUser()

@@ -6,7 +6,7 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
   <StackLayout
     VerticalOptions="Center"
-    HorizontalOptions="Center"
+    HorizontalOptions="CenterAndExpand"
     Spacing="10">
   <!--<StackLayout Orientation="Vertical" VerticalOptions="Center">-->
     <Label TextColor="White" FontSize="20" Text="Acceso"></Label>
@@ -22,6 +22,6 @@
       BorderRadius="20"
       BackgroundColor="White"
       TextColor="{StaticResource MainColor}"
-      Text="Begin"></Button>
+      Text="Acceso"></Button>
   </StackLayout>
 </ContentPage>

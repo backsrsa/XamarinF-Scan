@@ -10,15 +10,15 @@
       <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
                  Text="{Binding Waitress, Mode=TwoWay}"></Entry>
       <Button  BackgroundColor="{StaticResource MainColor}"
-              TextColor="{StaticResource MenuFontColor}"
+               TextColor="{StaticResource MenuFontColor}"
                Text="Scan"
                Command="{Binding GoToScanCommand}"
-               />
+               BorderRadius="20"/>
       <Button  BackgroundColor="{StaticResource MainColor}"
-              TextColor="{StaticResource MenuFontColor}"
-                Command="{Binding SaveCommand}"
+               TextColor="{StaticResource MenuFontColor}"
+               Command="{Binding SaveCommand}"
                Text="Save"
-               />
+               BorderRadius="20"/>
     </StackLayout>
   </ScrollView>
 </ContentPage>

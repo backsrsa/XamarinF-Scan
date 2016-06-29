@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ScannerMot.Pages.SettingsPage">
-  <Label Text="Settings" VerticalOptions="Center" HorizontalOptions="Center" />
+             x:Class="ScannerMot.Pages.SettingsPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+  <StackLayout Orientation="Vertical" 
+               VerticalOptions="Center"
+               HorizontalOptions="Center">
+    <Button  BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource MenuFontColor}"
+             Text="Modificar Usuario"
+             Command="{Binding GoToCommand}" CommandParameter="UpdateUserPage"
+             HeightRequest="40"
+             BorderRadius="20"/>
+  </StackLayout>
 </ContentPage>

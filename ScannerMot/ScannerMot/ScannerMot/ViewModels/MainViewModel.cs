@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using ScannerMot.Models;
@@ -23,6 +24,20 @@ namespace ScannerMot.ViewModels
         public DeviceuserViewModel Login { get; set; }
 
         #region Commands
+
+        public ICommand UpdateServicesCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadServices);
+            }
+        }
+
+        private async void LoadServices()
+        {
+            await LoadAllServices();
+        }
+
 
         public ICommand GoToCommand
         {
@@ -79,17 +94,7 @@ namespace ScannerMot.ViewModels
 
         private async void Start()
         {
-            var list = await _apiService.GetAllServicesTask();
-            Services.Clear();
-            foreach (var service in list)
-            {
-                Services.Add(new ServiceViewModel()
-                {
-                    Waitress = service.Waitress,
-                    Room = service.Room,
-                    Supervisor = service.Supervisor
-                });
-            }
+            await LoadAllServices();
             if (SystemAccess())
                 _navigationService.SetMainPage("MasterPage");
             else
@@ -105,6 +110,21 @@ namespace ScannerMot.ViewModels
                 {
 
                 }
+            }
+        }
+
+        private async Task LoadAllServices()
+        {
+            var list = await _apiService.GetAllServicesTask();
+            Services.Clear();
+            foreach (var service in list)
+            {
+                Services.Add(new ServiceViewModel()
+                {
+                    Waitress = service.Waitress,
+                    Room = service.Room,
+                    Supervisor = service.Supervisor
+                });
             }
         }
 
