@@ -45,12 +45,12 @@ namespace ScannerMot.ViewModels
             {
                 await _apiService.CreateServiceTask(new Service()
                 {
-                    Supervisor = Supervisor,
+                    Supervisor = VariablesLocales.Supervisor,
                     Room = VariablesLocales.Room,
                     CreationDate = DateTime.Now,
                     Activo = true,
                     Estatus = 0,
-                    Hotel = "R1",
+                    Hotel = VariablesLocales.Hotel,
                     Waitress = Waitress
                 });
                 await _dialogService.ShowMessage("Information", "The service has been created successfully");

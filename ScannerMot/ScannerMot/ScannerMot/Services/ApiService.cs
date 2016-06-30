@@ -9,12 +9,12 @@ namespace ScannerMot.Services
 {
    public class ApiService
     {
-        public async Task<List<Service>> GetAllServicesTask()
+        public async Task<List<Service>> GetAllServicesTask(string nombreHotel)
         {
             using (HttpClient client = new HttpClient())
             {
                 // string url = "http://192.168.20.140:8084/api/services";
-                string url = $"http://192.168.20.55:8086/api/services/lastservicesbyhotel/{"R1"}";
+                string url = $"http://192.168.20.55:8086/api/services/lastservicesbyhotel/{nombreHotel}";
                 // client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
                 var result = await client.GetAsync(url);
 

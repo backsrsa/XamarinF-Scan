@@ -94,7 +94,6 @@ namespace ScannerMot.ViewModels
 
         private async void Start()
         {
-            await LoadAllServices();
             if (SystemAccess())
                 _navigationService.SetMainPage("MasterPage");
             else
@@ -104,18 +103,18 @@ namespace ScannerMot.ViewModels
                 {
                     Login.Password = string.Empty;
                     Login.Username = string.Empty;
-                   
                 }
                 catch (Exception ex)
                 {
 
                 }
             }
+            await LoadAllServices();
         }
 
         private async Task LoadAllServices()
         {
-            var list = await _apiService.GetAllServicesTask();
+            var list = await _apiService.GetAllServicesTask(VariablesLocales.Hotel);
             Services.Clear();
             foreach (var service in list)
             {
@@ -137,6 +136,8 @@ namespace ScannerMot.ViewModels
                 if (user != null)
                 {
                     rsp = user.Password == Security.Encriptar(Login.Password);
+                    VariablesLocales.Hotel = user.Hotel;
+                    VariablesLocales.Supervisor = user.Username;
                 }
             }
             return rsp;
@@ -165,6 +166,12 @@ namespace ScannerMot.ViewModels
                 {
                     Icon = "ic_action_settings",
                     Title = "Configuracion",
+                    PageName = "SettingsPage"
+                },
+                new MenuItemViewModel()
+                {
+                    Icon = "ic_action_settings",
+                    Title = "Salir",
                     PageName = "SettingsPage"
                 }
             };

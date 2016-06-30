@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ScannerMot.Pages.LoginPage"  
+             x:Class="ScannerMot.Pages.LoginPage"
              BackgroundColor="{StaticResource MainColor}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
   <StackLayout
     VerticalOptions="Center"
-    HorizontalOptions="CenterAndExpand"
+    Padding="40"
     Spacing="10">
-  <!--<StackLayout Orientation="Vertical" VerticalOptions="Center">-->
+    <!--<StackLayout Orientation="Vertical" VerticalOptions="Center">-->
     <Label TextColor="White" FontSize="20" Text="Acceso"></Label>
     <Label TextColor="{StaticResource FontColor}" Text="Usuario"/>
     <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
@@ -18,7 +18,8 @@
                Text="{Binding Login.Password, Mode=TwoWay}" IsPassword="True"></Entry>
     <Button
       Command="{Binding StartCommand}"
-      HeightRequest="40"
+      WidthRequest = "100"
+      HeightRequest = "50"
       BorderRadius="20"
       BackgroundColor="White"
       TextColor="{StaticResource MainColor}"

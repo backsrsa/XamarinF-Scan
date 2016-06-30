@@ -42,7 +42,7 @@ namespace ScannerMot.ViewModels
                     });
                 }
                 await _dialogService.ShowMessage("Information", "The service has been created successfully");
-                App.Navigator.PopAsync();
+                await App.Navigator.PopAsync();
             }
             catch (Exception exception)
             {

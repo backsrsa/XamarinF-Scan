@@ -6,7 +6,7 @@
              BackgroundColor="{StaticResource BackgroundColor}">
   <ScrollView BindingContext="{Binding NewEmployee}">
     <StackLayout VerticalOptions="Center"
-                >
+         Padding="40">
       <Label TextColor="{StaticResource FontColor}" Text="Nombre"/>
       <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
                  Text="{Binding Name, Mode=TwoWay}"></Entry>
@@ -18,11 +18,12 @@
       <Label TextColor="{StaticResource FontColor}" Text="Telefono"/>
       <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
                  Text="{Binding Phone, Mode=TwoWay}" Keyboard="Telephone"></Entry>
-      
+
       <Button  BackgroundColor="{StaticResource MainColor}"
-             TextColor="{StaticResource MenuFontColor}"
-              Command="{Binding SaveCommand}"
-              Text="Save"
+               TextColor="{StaticResource MenuFontColor}"
+               Command="{Binding SaveCommand}"
+               Text="Save" 
+               BorderRadius="20"
                />
     </StackLayout>
   </ScrollView>

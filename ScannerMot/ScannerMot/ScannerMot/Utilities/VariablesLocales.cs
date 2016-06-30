@@ -9,5 +9,7 @@ namespace ScannerMot.Utilities
     public class VariablesLocales
     {
         public static string Room { get; set; }
+        public static string Hotel { get; set;}
+        public static string Supervisor { get; set; }
     }
 }
