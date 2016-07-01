@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight.Command;
 using ScannerMot.Models;
 using ScannerMot.Services;
 using ScannerMot.Utilities;
+using Xamarin.Forms;
 
 namespace ScannerMot.ViewModels
 {
@@ -166,12 +167,6 @@ namespace ScannerMot.ViewModels
                 {
                     Icon = "ic_action_settings",
                     Title = "Configuracion",
-                    PageName = "SettingsPage"
-                },
-                new MenuItemViewModel()
-                {
-                    Icon = "ic_action_settings",
-                    Title = "Salir",
                     PageName = "SettingsPage"
                 }
             };
