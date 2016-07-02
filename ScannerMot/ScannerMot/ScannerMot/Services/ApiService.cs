@@ -28,7 +28,6 @@ namespace ScannerMot.Services
                     return new List<Service>();
             }
         }
-
         public async Task<Service> CreateServiceTask(Service newService)
         {
             using (HttpClient client = new HttpClient())
@@ -51,6 +50,26 @@ namespace ScannerMot.Services
                 {
                     return null;
                 }
+            }
+        }
+
+        public async Task<Service> GetServiceByServiceId(int serviceId)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                // string url = "http://192.168.20.140:8084/api/services";
+                string url = $"http://192.168.20.55:8086/api/Services/{serviceId}";
+                //client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
+                var result = await client.GetAsync(url);
+
+                string data = await result.Content.ReadAsStringAsync();
+
+                if (result.IsSuccessStatusCode)
+                {
+                    return JsonConvert.DeserializeObject<Service>(data);
+                }
+                else
+                    return new Service();
             }
         }
     }

@@ -22,7 +22,8 @@ namespace ScannerMot.ViewModels
 
         public ServiceViewModel NewService { get; set; }
         public EmployeeViewModel NewEmployee { get; set; }
-        public DeviceuserViewModel Login { get; set; }
+        public DeviceuserViewModel NewDevice { get; set; }
+        public LoginViewModel Login { get; set; }
 
         #region Commands
 
@@ -38,7 +39,6 @@ namespace ScannerMot.ViewModels
         {
             await LoadAllServices();
         }
-
 
         public ICommand GoToCommand
         {
@@ -80,6 +80,10 @@ namespace ScannerMot.ViewModels
                         }
                     }
                     NewEmployee = new EmployeeViewModel();
+                    break;
+
+                case "UserPage":
+                    NewDevice=new DeviceuserViewModel();
                     break;
             }
             _navigationService.Navigate(pageName);
@@ -123,7 +127,8 @@ namespace ScannerMot.ViewModels
                 {
                     Waitress = service.Waitress,
                     Room = service.Room,
-                    Supervisor = service.Supervisor
+                    Supervisor = service.Supervisor,
+                    Id = service.Id
                 });
             }
         }
@@ -184,7 +189,7 @@ namespace ScannerMot.ViewModels
             _navigationService = new NavigationService();
             _dialogService = new DialogService();
             _apiService = new ApiService();
-            Login = new DeviceuserViewModel();
+            Login = new LoginViewModel();
             LoadMenu();
         }
 

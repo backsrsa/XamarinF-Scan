@@ -10,7 +10,7 @@
     <Button  BackgroundColor="{StaticResource MainColor}"
              TextColor="{StaticResource MenuFontColor}"
              Text="Modificar Usuario"
-             Command="{Binding GoToCommand}" CommandParameter="UpdateUserPage"
+             Command="{Binding GoToCommand}" CommandParameter="UserPage"
              HeightRequest="40"
              BorderRadius="20"/>
   </StackLayout>

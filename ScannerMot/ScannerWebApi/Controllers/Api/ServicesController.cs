@@ -103,7 +103,7 @@ namespace ScannerWebApi.Controllers.Api
         public IQueryable<Service> LastServicesByHotel(string hotel)
         {
             //var query = db.Services.Where(u => u.Hotel == hotel).Take(5);
-            var query = (db.Services.Where(s => s.Hotel == hotel).OrderByDescending(s => s.Id)).Take(8);
+            var query = (db.Services.Where(s => s.Hotel == hotel && s.Activo).OrderByDescending(s => s.Id)).Take(8);
             return query;
         }
 

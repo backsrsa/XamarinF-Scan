@@ -1,13 +1,17 @@
 ﻿using System;
-using ScannerMot.Utilities;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using ScannerMot.Models;
 using ScannerMot.Services;
+using ScannerMot.Utilities;
 
 namespace ScannerMot.ViewModels
 {
-    public class DeviceuserViewModel : BaseViewModel
+    public class LoginViewModel:BaseViewModel
     {
         private readonly NavigationService _navigationService;
         readonly DialogService _dialogService;
@@ -15,7 +19,6 @@ namespace ScannerMot.ViewModels
         private int _deviceUserId;
         private string _username;
         private string _password;
-        private string _hotel;
 
         public int DeviceUserId
         {
@@ -32,15 +35,6 @@ namespace ScannerMot.ViewModels
             set
             {
                 _username = value;
-                OnPropertyChanged();
-            }
-        }
-        public string Hotel
-        {
-            get { return _hotel; }
-            set
-            {
-                _hotel = value;
                 OnPropertyChanged();
             }
         }
@@ -61,7 +55,6 @@ namespace ScannerMot.ViewModels
                 return new RelayCommand(Save);
             }
         }
-
         private async void Save()
         {
             try
@@ -70,10 +63,8 @@ namespace ScannerMot.ViewModels
                 {
                     datos.UpdatedDeviceUser(new DeviceUser()
                     {
-                        DeviceUserId = DeviceUserId,
                         Username = Username,
-                        Password = Security.Encriptar(Password),
-                        Hotel = Hotel
+                        Password = Security.Encriptar(Password)
                     });
                 }
                 await _dialogService.ShowMessage("Information", "The service has been created successfully");
@@ -85,23 +76,11 @@ namespace ScannerMot.ViewModels
             }
         }
 
-        public DeviceuserViewModel()
+        public LoginViewModel()
         {
             _navigationService = new NavigationService();
             _dialogService = new DialogService();
-            CargarInformacionsuario();
-        }
-
-        private void CargarInformacionsuario()
-        {
-            using (var datos = new DataAccess())
-            {
-                var user = datos.GetDeviceUser(2);
-                DeviceUserId = user.DeviceUserId;
-                Username = user.Username;
-                Password = Security.DesEncriptar(user.Password);
-                Hotel = user.Hotel;
-            }
+         
         }
     }
 }

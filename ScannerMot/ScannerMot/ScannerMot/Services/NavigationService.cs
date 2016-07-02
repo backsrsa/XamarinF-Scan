@@ -45,6 +45,10 @@ namespace ScannerMot.Services
                 case "MainPage":
                     await App.Navigator.PopToRootAsync();
                     break;
+
+                case "UserPage":
+                    await Navigate(new UserPage());
+                    break;
             }
         }
 

@@ -12,11 +12,27 @@ namespace ScannerMot.ViewModels
         private readonly NavigationService _navigationService;
         readonly ApiService _apiService;
         readonly DialogService _dialogService;
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Waitress { get; set; }
         public string Room { get; set; }
         public string Supervisor { get; set; }
         public DateTime CreationDate { get; set; }
+        public ICommand SaluteCommand
+        {
+            get
+            {
+                return new RelayCommand<int>(ShowDetails);
+            }
+        }
+
+        private async void ShowDetails(int serviceId)
+        {
+
+            Service servicio = await _apiService.GetServiceByServiceId(serviceId);
+
+            await _dialogService.ShowMessage("Information",
+                $"{"F/H: " + servicio.CreationDate} \n {servicio.Supervisor}");
+        }
 
         public ICommand GoToScanCommand
         {
@@ -58,7 +74,7 @@ namespace ScannerMot.ViewModels
             }
             catch (Exception exception)
             {
-                await _dialogService.ShowMessage("Information", "Has been an error unexpected"+ exception.Message);
+                await _dialogService.ShowMessage("Information", "Has been an error unexpected" + exception.Message);
             }
         }
 
@@ -66,7 +82,7 @@ namespace ScannerMot.ViewModels
         {
             _navigationService = new NavigationService();
             _dialogService = new DialogService();
-            _apiService=new ApiService();
+            _apiService = new ApiService();
         }
     }
 }

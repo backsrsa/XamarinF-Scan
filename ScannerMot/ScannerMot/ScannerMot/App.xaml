@@ -23,14 +23,21 @@
       <DataTemplate x:Key="ServiceItemTemplate">
         <ViewCell>
           <Grid Padding="8">
+              <!--disparar eventos desde el grid-->
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding SaluteCommand}" CommandParameter="{Binding Id}"></TapGestureRecognizer>
+              </Grid.GestureRecognizers>
+            
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="Auto"></ColumnDefinition>
               <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            
             <Image Source="ic_action_clean.png"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                   VerticalOptions="Start"/>
+                   WidthRequest="50"
+                   HeightRequest="50"
+                   VerticalOptions="Start"
+                   />
             <StackLayout Grid.Column="1">
               <Label Text="{Binding Waitress }"
                      FontAttributes="Bold"
@@ -39,7 +46,7 @@
               <Label Text="{Binding Room}"
                    VerticalOptions="Center"
                    TextColor="{StaticResource FontColor}"/>
-              <Label Text="{Binding Supervisor}"
+              <Label Text="{Binding Id}"
                    VerticalOptions="Center"
                    TextColor="{StaticResource MainColor}"/>
             </StackLayout>

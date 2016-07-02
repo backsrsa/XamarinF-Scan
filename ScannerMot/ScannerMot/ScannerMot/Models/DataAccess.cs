@@ -87,6 +87,11 @@ namespace ScannerMot.Models
             return user;
         }
 
+        public DeviceUser GetDeviceUser(int deviceUserId)
+        {
+            return _connection.Table<DeviceUser>().FirstOrDefault(c => c.DeviceUserId == deviceUserId);
+        }
+
         public void Dispose()
         {
             _connection.Dispose();
