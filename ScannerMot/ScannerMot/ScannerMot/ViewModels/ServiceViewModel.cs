@@ -30,8 +30,11 @@ namespace ScannerMot.ViewModels
 
             Service servicio = await _apiService.GetServiceByServiceId(serviceId);
 
-            await _dialogService.ShowMessage("Information",
-                $"{"F/H: " + servicio.CreationDate} \n {servicio.Supervisor}");
+            await _dialogService.ShowMessage("Informacion",
+                $"{"F/H: " + servicio.CreationDate} " +
+                $"\n{"Aseada por: " + servicio.Waitress} " +
+                $"\n{"Habitacion: " + servicio.Room}");
+           
         }
 
         public ICommand GoToScanCommand
@@ -61,20 +64,20 @@ namespace ScannerMot.ViewModels
             {
                 await _apiService.CreateServiceTask(new Service()
                 {
-                    Supervisor = VariablesLocales.Supervisor,
+                    Supervisor = VariablesLocales.Supervisor.Trim(),
                     Room = VariablesLocales.Room,
                     CreationDate = DateTime.Now,
                     Activo = true,
                     Estatus = 0,
                     Hotel = VariablesLocales.Hotel,
-                    Waitress = Waitress
+                    Waitress = Waitress.Trim()
                 });
-                await _dialogService.ShowMessage("Information", "The service has been created successfully");
+                await _dialogService.ShowMessage("Informacion", "El servicio se ha guardado correctamente.");
                 _navigationService.Navigate("MainPage");
             }
             catch (Exception exception)
             {
-                await _dialogService.ShowMessage("Information", "Has been an error unexpected" + exception.Message);
+                await _dialogService.ShowMessage("Informacion", "Ha ocurrido un error inesperado favor de intentarlo de nuevo mas tarde." + exception.Message);
             }
         }
 

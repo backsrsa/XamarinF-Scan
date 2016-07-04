@@ -34,7 +34,7 @@ namespace ScannerMot.ViewModels
             get { return _username; }
             set
             {
-                _username = value;
+                _username = value.Trim();
                 OnPropertyChanged();
             }
         }
@@ -43,7 +43,7 @@ namespace ScannerMot.ViewModels
             get { return _password; }
             set
             {
-                _password = value;
+                _password = value.Trim();
                 OnPropertyChanged();
             }
         }
