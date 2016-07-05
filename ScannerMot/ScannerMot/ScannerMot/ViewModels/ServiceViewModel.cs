@@ -7,7 +7,7 @@ using ScannerMot.Utilities;
 
 namespace ScannerMot.ViewModels
 {
-    public class ServiceViewModel
+    public class ServiceViewModel:BaseViewModel
     {
         private readonly NavigationService _navigationService;
         readonly ApiService _apiService;
@@ -62,6 +62,18 @@ namespace ScannerMot.ViewModels
         {
             try
             {
+                if (Waitress.Trim() == string.Empty)
+                {
+                    await _dialogService.ShowMessage("Informacion", "Favor de capturar el nombre de la camarista.");
+                    return;
+                }
+
+                if (VariablesLocales.Room.Trim() == string.Empty)
+                {
+                    await _dialogService.ShowMessage("Informacion", "Favor de capturar codigo de la recamara.");
+                    return;
+                }
+
                 await _apiService.CreateServiceTask(new Service()
                 {
                     Supervisor = VariablesLocales.Supervisor.Trim(),
@@ -86,6 +98,7 @@ namespace ScannerMot.ViewModels
             _navigationService = new NavigationService();
             _dialogService = new DialogService();
             _apiService = new ApiService();
+            Waitress = string.Empty;
         }
     }
 }

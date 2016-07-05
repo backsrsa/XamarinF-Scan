@@ -107,6 +107,7 @@
     <Content Include="ic_action_settings.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ic_action_update.png" />
     <Content Include="ic_launcher.png" />
     <Content Include="ic_action_menu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -118,6 +119,7 @@
     <Content Include="Assets\StoreLogo.scale-240.png" />
     <Content Include="Assets\WideLogo.scale-240.png" />
     <Content Include="ic_action_add.png" />
+    <Content Include="StoreManifest.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -177,6 +179,13 @@
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.0.0.6482\lib\wpa81\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="ZXing.Net.Mobile.Core">
+      <HintPath>..\..\packages\ZXing.Net.Mobile.2.0.4.46\lib\wp8\ZXing.Net.Mobile.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.portable, Version=2.0.4.46, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\ZXing.Net.Mobile.2.0.4.46\lib\wp8\zxing.portable.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

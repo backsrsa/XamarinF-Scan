@@ -30,6 +30,7 @@ namespace ScannerMot
             InitializeComponent();
             CreateSuperUser();
             CrearUsuario();
+            VariablesLocales.Room = string.Empty;
             MainPage = new LoginPage();
             // MainPage = new NavigationPage(new ScannerPage());
         }
